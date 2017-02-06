@@ -1,12 +1,11 @@
-FROM node:6
+FROM node:6-alpine
+
+RUN apk --no-cache add python su-exec make g++
 
 RUN npm install ssb-patchwork -g
 
-ENV APP_UID 1000
-ENV APP_GID 1000
-RUN groupadd -g $APP_GID app && useradd -m -u $APP_UID -g $APP_GID app
-USER app
+COPY docker-entrypoint /docker-entrypoint
 
-VOLUME /home/app/.ssb
-ENTRYPOINT ["patchwork"]
+VOLUME /home/node/.ssb
+ENTRYPOINT ["/docker-entrypoint"]
 EXPOSE 7777

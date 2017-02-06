@@ -1,0 +1,5 @@
+#!/bin/sh -e
+
+mkdir -p /home/node/.ssb
+chown -R node /home/node/.ssb
+su-exec node patchwork
