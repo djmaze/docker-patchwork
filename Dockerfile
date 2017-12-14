@@ -1,6 +1,6 @@
 FROM node:6-alpine
 
-RUN apk --no-cache add python su-exec make g++
+RUN apk --no-cache add python su-exec git make g++
 
 RUN npm install ssb-patchwork -g
 
